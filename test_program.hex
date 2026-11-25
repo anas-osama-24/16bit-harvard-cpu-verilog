@@ -1,0 +1,72 @@
+9840 // PC 00: LDI R1, 0
+0C48 // PC 01: DEC R1, R1 (flags: C V N Z = 1 0 1 0)
+9881 // PC 02: LDI R2, 1
+04CA // PC 03: ADD R3, R1, R2 (65535 + 1)
+0B11 // PC 04: SUB R4, R2, R1
+0B4A // PC 05: SUB R5, R1, R2
+1B81 // PC 06: SHR R6, R1 (R6 = 32767, flags unchanged)
+03F0 // PC 07: INC R7, R6 (signed overflow)
+05F2 // PC 08: ADD R7, R6, R2 (signed overflow)
+0AF1 // PC 09: SUB R3, R6, R1 (borrow and overflow)
+0D78 // PC 10: DEC R5, R7 (signed overflow)
+0308 // PC 11: INC R4, R1 (carry, zero)
+9847 // PC 12: LDI R1, 7
+9883 // PC 13: LDI R2, 3
+04CA // PC 14: ADD R3, R1, R2 = 10
+0B0A // PC 15: SUB R4, R1, R2 = 4
+0358 // PC 16: INC R5, R3 = 11
+0DA0 // PC 17: DEC R6, R4 = 3
+01E8 // PC 18: MOVA R7, R5 = 11
+105A // PC 19: AND R1, R3, R2 = 2
+129C // PC 20: OR R2, R3, R4 = 14
+14D4 // PC 21: XOR R3, R2, R4 = 10
+1718 // PC 22: NOT R4, R3
+1942 // PC 23: MOVB R5, R2 = 14
+1B85 // PC 24: SHR R6, R5 = 7
+1DC6 // PC 25: SHL R7, R6 = 14
+847D // PC 26: ADI R1, R7, 5 = 19
+9885 // PC 27: LDI R2, 5
+4017 // PC 28: ST R2, R7 (M[5] = 14)
+20D0 // PC 29: LD R3, R2 (R3 = 14)
+9886 // PC 30: LDI R2, 6
+4011 // PC 31: ST R2, R1 (M[6] = 19)
+9901 // PC 32: LDI R4, 1
+C022 // PC 33: BRZ R4, +2 (not taken)
+8401 // PC 34: ADI R0, R0, 1 (must run)
+9940 // PC 35: LDI R5, 0
+C02A // PC 36: BRZ R5, +2 (taken)
+8404 // PC 37: ADI R0, R0, 4 (must be skipped)
+9983 // PC 38: LDI R6, 3
+C232 // PC 39: BRN R6, +2 (not taken)
+8401 // PC 40: ADI R0, R0, 1 (must run)
+9980 // PC 41: LDI R6, 0
+0DB0 // PC 42: DEC R6, R6 = -1
+C232 // PC 43: BRN R6, +2 (taken)
+8404 // PC 44: ADI R0, R0, 4 (must be skipped)
+9940 // PC 45: LDI R5, 0
+0D68 // PC 46: DEC R5, R5
+0D68 // PC 47: DEC R5, R5
+0D68 // PC 48: DEC R5, R5 = -3
+8401 // PC 49: loop: ADI R0, R0, 1
+0368 // PC 50: INC R5, R5
+C3EE // PC 51: BRN R5, -2 (back to loop)
+9987 // PC 52: R6 = 7
+1D86 // PC 53: R6 << 1
+1D86 // PC 54: R6 << 1
+1D86 // PC 55: R6 << 1 = 56
+85B3 // PC 56: R6 = 56 + 3 = 59 (address of PC 59)
+E030 // PC 57: JMP R6
+8404 // PC 58: ADI R0, R0, 4 (must be skipped)
+8402 // PC 59: ADI R0, R0, 2
+0A49 // PC 60: SUB R1, R1, R1 (R1 = 0, Z = 1)
+9885 // PC 61: LDI R2, 5
+1C42 // PC 62: SHL R1, R2 = 10 (flags updated)
+0AC9 // PC 63: SUB R3, R1, R1 = 0
+1902 // PC 64: MOVB R4, R2 = 5 (flags updated)
+1943 // PC 65: MOVB R5, R3 = 0 (Z set)
+9980 // PC 66: LDI R6, 0
+0DB0 // PC 67: DEC R6, R6 = 65535
+1DC6 // PC 68: SHL R7, R6 = 65534 (C cleared, N set)
+0AC9 // PC 69: SUB R3, R1, R1 = 0
+1946 // PC 70: MOVB R5, R6 = 65535 (N set)
+FE00 // PC 71: HALT
